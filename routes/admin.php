@@ -16,8 +16,19 @@ Route::group([
 ], function (Router $router) {
     $router->get('/', 'HomeController@index');
 
+    // Auth
     $router->post('auth/login', 'AuthController@login');
     $router->get('auth/admin', 'AuthController@admin');
-
     $router->post('auth/logout', 'AuthController@logout');
+
+    // User
+    $router->get('auth/administrators', 'AdministratorController@index');
+
+    // Role
+    $router->resource('auth/roles', 'RoleController');
+
+    // Permission
+    $router->post('auth/permissions', 'PermissionController@store');
+
+
 });

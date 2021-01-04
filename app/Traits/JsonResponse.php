@@ -8,15 +8,17 @@
 namespace App\Traits;
 
 
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\MessageBag;
-use phpDocumentor\Reflection\Types\Integer;
+use Illuminate\Contracts\Validation\Validator;
 
 trait JsonResponse
 {
-    protected $message = 'message';
-    protected $statusCode = 200;
     protected $data = [];
+    protected $statusCode;
+    protected $message = 'message';
+
 
     /**
      * 设置 HTTP 状态码.
@@ -63,7 +65,6 @@ trait JsonResponse
     {
         return $this
             ->statusCode(200)
-            ->message('success')
             ->send();
     }
 
@@ -108,12 +109,22 @@ trait JsonResponse
      */
     public function send()
     {
-        $data = ['code' => $this->statusCode, 'message' => $this->message];
+        $result = ['code' => $this->statusCode, 'message' => $this->message];
+
         if (!empty($this->data)) {
-            $data += ['data' => $this->data];
+            // List with the page
+            if (is_object($this->data) && $this->data instanceof AnonymousResourceCollection) {
+                $meta = [
+                    'total' => $this->data->total(),
+                    'per_page' => $this->data->perPage(),
+                    'current_page' => $this->data->currentPage()
+                ];
+                return response()->json($result + ['data' => ['list' => $this->data, 'meta' => $meta]], $this->statusCode);
+            }
+            return response()->json($result + ['data' => $this->data], $this->statusCode);
         }
 
-        return response()->json($data, $this->statusCode);
+        return response()->json($result, $this->statusCode);
     }
 
 }

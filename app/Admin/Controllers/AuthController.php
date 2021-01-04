@@ -17,10 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 
-class AuthController extends Controller
+class AuthController extends AdminController
 {
-    use JsonResponse;
-
     /**
      * Handle a login request.
      *
@@ -121,6 +119,6 @@ class AuthController extends Controller
             ? trans('admin.auth_failed')
             : 'These credentials do not match our records.';
 
-        return $this->error($message, 401);
+        return $this->error($message, 422);
     }
 }
