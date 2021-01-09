@@ -7,6 +7,7 @@
  */
 
 namespace App\Admin\Models;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Menu extends Model
 {
+
+    protected $table = 'admin_menu';
 
     /**
      * The attributes that are mass assignable.
@@ -37,4 +40,15 @@ class Menu extends Model
 
         return $this->belongsToMany($relatedModel, $pivotTable, 'menu_id', 'role_id')->withTimestamps();
     }
+
+    public function permissions(): BelongsToMany
+    {
+        $pivotTable = config('admin.database.permission_menu_table');
+
+        $relatedModel = config('admin.database.permissions_model');
+
+        return $this->belongsToMany($relatedModel, $pivotTable, 'menu_id', 'permission_id')->withTimestamps();
+    }
+
+
 }

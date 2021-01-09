@@ -3,15 +3,15 @@
 namespace App\Admin\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use App\Admin\Models\Administrator;
 use App\Admin\Resources\AdministratorResource;
-use App\Admin\Controllers\AdminController;
 
 class AdministratorController extends AdminController
 {
     /**
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index(Request $request)
     {

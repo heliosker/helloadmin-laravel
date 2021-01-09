@@ -15,7 +15,7 @@ use Illuminate\Contracts\Validation\Validator;
 
 trait JsonResponse
 {
-    protected $data = [];
+    private $data = [];
     protected $statusCode;
     protected $message = 'message';
 

@@ -9,13 +9,13 @@
 namespace App\Admin\Controllers;
 
 
-use Illuminate\Auth\GuardHelpers;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\Traits\JsonResponse;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Contracts\Auth\StatefulGuard;
 
 class AuthController extends AdminController
 {
@@ -51,7 +51,7 @@ class AuthController extends AdminController
     /**
      * Get the authenticated User.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function admin()
     {
@@ -61,7 +61,7 @@ class AuthController extends AdminController
     /**
      * Logout
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function logout()
     {
@@ -101,7 +101,7 @@ class AuthController extends AdminController
     /**
      * Get the guard to be used during authentication.
      *
-     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     * @return Guard|StatefulGuard
      */
     protected function guard()
     {
@@ -111,7 +111,7 @@ class AuthController extends AdminController
     /**
      * login failed
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     protected function loginFailed()
     {

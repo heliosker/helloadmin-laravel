@@ -27,6 +27,9 @@ Route::group([
     // Role
     $router->resource('auth/roles', 'RoleController');
 
+    // Menu
+    $router->resource('auth/menu', 'MenuController');
+
     // Permission
     $router->post('auth/permissions', 'PermissionController@store');
 

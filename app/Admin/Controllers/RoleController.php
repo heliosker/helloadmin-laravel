@@ -5,15 +5,14 @@ namespace App\Admin\Controllers;
 use App\Admin\Models\Role;
 use App\Admin\Requests\RoleRequest;
 use App\Admin\Resources\RoleResource;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 
 class RoleController extends AdminController
 {
     /**
      * Role list
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
@@ -24,7 +23,7 @@ class RoleController extends AdminController
      * Store a newly role created resource in storage.
      *
      * @param RoleRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(RoleRequest $request)
     {
@@ -36,7 +35,7 @@ class RoleController extends AdminController
      * Display the specified resource.
      *
      * @param Role $role
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function show(Role $role)
     {
@@ -48,7 +47,7 @@ class RoleController extends AdminController
      *
      * @param RoleRequest $request
      * @param Role $role
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(RoleRequest $request, Role $role)
     {
@@ -60,7 +59,7 @@ class RoleController extends AdminController
      * Delete role
      *
      * @param Role $role
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      * @throws \Exception
      */
     public function destroy(Role $role)

@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Admin\Resources\PermissionResource;
 use Illuminate\Http\Request;
 use App\Admin\Models\Permission;
+use Illuminate\Http\JsonResponse;
 use App\Admin\Requests\PermissionRequest;
 
 class PermissionController extends AdminController
@@ -12,7 +13,7 @@ class PermissionController extends AdminController
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
@@ -23,7 +24,7 @@ class PermissionController extends AdminController
      * 添加权限
      *
      * @param PermissionRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(PermissionRequest $request)
     {
@@ -36,7 +37,7 @@ class PermissionController extends AdminController
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -48,7 +49,7 @@ class PermissionController extends AdminController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -59,7 +60,7 @@ class PermissionController extends AdminController
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function destroy($id)
     {
