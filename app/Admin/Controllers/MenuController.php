@@ -17,7 +17,7 @@ class MenuController extends AdminController
      */
     public function index()
     {
-        return $this->data(MenuResource::collection(Menu::paginate(15)))->success();
+        return $this->data(Menu::tree())->success();
     }
 
     /**
@@ -85,7 +85,7 @@ class MenuController extends AdminController
             }
 
             $menu->delete();
-            
+
             return $this->success();
 
         } catch (\Exception $e) {
