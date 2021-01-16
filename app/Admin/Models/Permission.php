@@ -18,7 +18,7 @@ class Permission extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'slug', 'http_method', 'http_path'];
+    protected $fillable = ['name', 'slug', 'http_method', 'http_path', 'parent_id'];
 
     /**
      * @var array
