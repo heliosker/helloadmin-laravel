@@ -2,10 +2,10 @@
 
 namespace App\Admin\Requests;
 
-use App\Admin\Requests\AdminRequest;
+use App\Admin\Requests\BackendRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class MenuRequest extends AdminRequest
+class MenuRequest extends BackendRequest
 {
     /**
      * Determine if the user is authorized to make this request.

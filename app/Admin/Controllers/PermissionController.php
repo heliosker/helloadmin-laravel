@@ -8,7 +8,7 @@ use App\Admin\Models\Permission;
 use Illuminate\Http\JsonResponse;
 use App\Admin\Requests\PermissionRequest;
 
-class PermissionController extends AdminController
+class PermissionController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class PermissionController extends AdminController
      */
     public function index()
     {
-        //
+        return $this->data(Permission::tree())->success();
     }
 
     /**
@@ -28,7 +28,7 @@ class PermissionController extends AdminController
      */
     public function store(PermissionRequest $request)
     {
-        $permission = Permission::create($request->only(['parent_id','slug','name','http_method','http_path']));
+        $permission = Permission::create($request->only(['parent_id', 'slug', 'name', 'http_method', 'http_path']));
 
         return $this->data(new PermissionResource($permission))->success();
     }
@@ -36,7 +36,7 @@ class PermissionController extends AdminController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function show($id)
@@ -47,8 +47,8 @@ class PermissionController extends AdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return JsonResponse
      */
     public function update(Request $request, $id)
@@ -59,7 +59,7 @@ class PermissionController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function destroy($id)

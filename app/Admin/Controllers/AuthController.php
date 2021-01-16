@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Auth\StatefulGuard;
 
-class AuthController extends AdminController
+class AuthController extends BackendController
 {
     /**
      * Handle a login request.

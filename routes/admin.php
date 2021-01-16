@@ -21,8 +21,8 @@ Route::group([
     $router->get('auth/admin', 'AuthController@admin');
     $router->post('auth/logout', 'AuthController@logout');
 
-    // User
-    $router->get('auth/administrators', 'AdministratorController@index');
+    // administrators
+    $router->resource('auth/administrators', 'AdministratorController');
 
     // Role
     $router->resource('auth/roles', 'RoleController');
@@ -32,6 +32,7 @@ Route::group([
 
     // Permission
     $router->post('auth/permissions', 'PermissionController@store');
+    $router->get('auth/permissions', 'PermissionController@index');
 
 
 });

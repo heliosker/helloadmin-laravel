@@ -10,7 +10,7 @@ namespace App\Admin\Controllers;
 use App\Traits\JsonResponse;
 use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class BackendController extends Controller
 {
     use JsonResponse;
 }

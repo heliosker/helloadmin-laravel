@@ -7,7 +7,7 @@ use App\Admin\Requests\RoleRequest;
 use App\Admin\Resources\RoleResource;
 use Illuminate\Http\JsonResponse;
 
-class RoleController extends AdminController
+class RoleController extends BackendController
 {
     /**
      * Role list

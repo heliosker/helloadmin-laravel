@@ -123,7 +123,6 @@ trait JsonResponse
             }
             return response()->json($result + ['data' => $this->data], $this->statusCode);
         }
-
         return response()->json($result, $this->statusCode);
     }
 

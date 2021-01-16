@@ -11,7 +11,7 @@ namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class HomeController extends AdminController
+class HomeController extends BackendController
 {
     public function index()
     {

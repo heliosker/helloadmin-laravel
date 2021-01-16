@@ -2,7 +2,7 @@
 
 namespace App\Admin\Requests;
 
-class RoleRequest extends AdminRequest
+class RoleRequest extends BackendRequest
 {
     /**
      * Determine if the user is authorized to make this request.

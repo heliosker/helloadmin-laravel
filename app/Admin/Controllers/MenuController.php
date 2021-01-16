@@ -8,7 +8,7 @@ use App\Admin\Requests\MenuRequest;
 use App\Admin\Resources\MenuResource;
 use Facade\FlareClient\Http\Exceptions\NotFound;
 
-class MenuController extends AdminController
+class MenuController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -77,20 +77,10 @@ class MenuController extends AdminController
      */
     public function destroy($id)
     {
-        try {
-            $menu = Menu::find($id);
-
-            if (is_null($menu)) {
-                throw new NotFound('Not found menu.');
-            }
-
+        if ($menu = Menu::find($id)) {
             $menu->delete();
-
-            return $this->success();
-
-        } catch (\Exception $e) {
-            return $this->error($e->getMessage());
         }
+        return $this->success();
     }
 
     /**

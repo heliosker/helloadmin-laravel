@@ -74,4 +74,16 @@ class Permission extends Model
         return $method;
     }
 
+    public static function tree()
+    {
+        $permission = [];
+        if ($menus = self::where('parent_id', 0)->select('id', 'name', 'parent_id')->orderBy('order', 'asc')->get()) {
+            foreach ($menus as $key => $item) {
+                $permission[$key] = $item;
+                $permission[$key]['children'] = self::where('parent_id', $item->id)->select('id', 'name', 'parent_id')->orderBy('order', 'asc')->get();
+            }
+        }
+        return $permission;
+    }
+
 }
